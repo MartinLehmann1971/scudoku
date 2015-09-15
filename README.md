@@ -5,7 +5,7 @@
 2) Scala port is in (Eclipse) project ```scudoku```. Port is 90% identical to the Java version except for some optimizations and minor refactorings. Algorithms are Scala-style!
 
 ## Main class
-Main class is ```scudoku.SudokuSolver``` which calls various solving algorithms one after another until grid does not change anymore.
+Main class is ```scudoku.SudokuSolver``` which calls various solving algorithms one after another until the grid does not change anymore.
 Besides the SudokuSolver also calls the consistency checks to find out if we ran into an inconsistent situation.
 
 ## Data structures
@@ -21,13 +21,13 @@ Changes to a ```scudoku.data.Cell``` are observed by the ```scudoku.data.Grid```
 The enumeration ```scudoku.data.UnknownOneToNine``` is an enumeration of 1,2,...,9 and 'Unknown' for the list of potential values of a cell.
 
 ## Solvers 
-Solvers are different algorithms which try to either fix a value in a cell by deleting potential values.
+Solvers are different algorithms which try to either fix a value in a cell by deleting potential values:
  * ```scudoku.solvers.OnlyOnePotentialValueLeftInCell```: If no more potential values in a cell => Fix its value
  * ```scudoku.solvers.LastPotentialValueInBlockOrLineOrColumn```: If only one cell has a potential value (in a block/line/column) => Fix its value
  * ```scudoku.solvers.IfValueFixedToLineOrColumnInsideABlockThenDeleteFromRest```: If we know that one line/column of a block can contain an potential values => Delete it from the rest of the line/column in the other blocks
 
 ## Checkers
-Checkers do consistency checks on the grid.
+Checkers do consistency checks on the grid:
  * ```scudoku.checkers.CheckCellsForFixDuplicateValues```: If two or more cells (in a line/column/block) have the same fix value, then we are doomed.
  * ```scudoku.checkers.CheckCellsForNoMorePotentialValuesAvailable```: Any cell which is not fix but does not have any more potential values? Then we are also doomed.
  
